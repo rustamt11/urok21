@@ -1,0 +1,13 @@
+{% extends 'book_app/base.html' %}
+
+{% block content %}
+    <h2>{{ book.title }}</h2>
+    <p>Автор: {{ book.author }}</p>
+    <p>Год издания: {{ book.publication_year }}</p>
+    <p>Жанры: {% for genre in book.genres.all %}{{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p>Рейтинг: {{ book.rating }}</p>
+    <p>Просмотры: {{ book.views }}</p>
+
+    <a href="{% url 'update-book' slug=book.slug %}">Обновить Информацию</a> |
+    <a href="{% url 'delete-book' slug=book.slug %}">Удалить Книгу</a>
+{% endblock %}

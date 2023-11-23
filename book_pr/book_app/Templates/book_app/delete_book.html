@@ -1,0 +1,7 @@
+{% extends 'book_app/base.html' %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Удалить</button>
+    <a href="{% url 'book-detail' slug=book.slug %}">Отменить</a>
+</form>

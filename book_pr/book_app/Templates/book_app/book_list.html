@@ -1,0 +1,18 @@
+{% extends 'book_app/base.html' %}
+
+
+{% block content %}
+    <h2>Список Книг</h2>
+    <ul>
+        {% for book in books %}
+            <li>
+                {{ book.title }} - 
+                <a href="{% url 'book-detail' slug=book.slug %}">Перейти</a> | 
+                <a href="{% url 'update-book' slug=book.slug %}">Обновить</a> |
+                <a href="{% url 'delete-book' slug=book.slug %}">Удалить</a>
+            </li>
+        {% empty %}
+            <li>Книги отсутствуют.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
